@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLocale } from '../i18n/config';
+import { siteContent } from '../data/site';
+
+const content = siteContent[defaultLocale];
+---
+
+<BaseLayout locale={defaultLocale} metadata={content.metadata}>
+	<main id="main-content"></main>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import type { Locale } from '../i18n/config';
+import type { SiteMetadata } from '../types/site';
+import '../styles/global.css';
+
+interface Props {
+	locale: Locale;
+	metadata: SiteMetadata;
+}
+
+const { locale, metadata } = Astro.props;
+const canonicalUrl = Astro.site
+	? new URL(Astro.url.pathname, Astro.site)
+	: undefined;
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<SeoHead metadata={metadata} canonicalUrl={canonicalUrl} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">Saltar al contenido</a>
+		<slot />
+	</body>
+</html>
