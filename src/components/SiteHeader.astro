@@ -1,0 +1,118 @@
+---
+import type { NavigationItem } from '../types/site';
+
+interface Props {
+	items: readonly NavigationItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<header class="site-header">
+	<div class="site-header__inner container">
+		<a class="site-header__brand" href="#main-content" aria-label="JM, volver al inicio">JM.</a>
+		<nav class="site-header__nav" aria-label="Navegación principal">
+			<ul>
+				{items.map((item) => (
+					<li><a href={item.href}>{item.label}</a></li>
+				))}
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: relative;
+		z-index: 10;
+		border-bottom: 1px solid var(--color-border);
+		background: var(--color-canvas);
+		backdrop-filter: blur(1rem);
+	}
+
+	.site-header__inner {
+		display: flex;
+		min-height: var(--header-height);
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-8);
+	}
+
+	.site-header__brand {
+		flex: none;
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.04em;
+		text-decoration: none;
+	}
+
+	.site-header__nav ul {
+		display: flex;
+		align-items: center;
+		gap: clamp(1rem, 2.8vw, 2.5rem);
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.site-header__nav a {
+		position: relative;
+		display: block;
+		padding-block: 0.65rem;
+		color: var(--color-text-muted);
+		font-size: 0.78rem;
+		letter-spacing: 0.035em;
+		text-decoration: none;
+		transition: color var(--duration-fast) var(--ease-out);
+	}
+
+	.site-header__nav a::after {
+		position: absolute;
+		right: 0;
+		bottom: 0.35rem;
+		left: 0;
+		height: 1px;
+		transform: scaleX(0);
+		background: currentcolor;
+		content: '';
+		transform-origin: right;
+		transition: transform var(--duration-base) var(--ease-out);
+	}
+
+	.site-header__nav a:hover,
+	.site-header__nav a:focus-visible {
+		color: var(--color-text);
+	}
+
+	.site-header__nav a:hover::after,
+	.site-header__nav a:focus-visible::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	@media (max-width: 42rem) {
+		.site-header__inner {
+			display: block;
+			padding-block: var(--space-3);
+		}
+
+		.site-header__brand {
+			display: inline-block;
+			padding: var(--space-1) 0;
+		}
+
+		.site-header__nav {
+			overflow-x: auto;
+			scrollbar-width: none;
+		}
+
+		.site-header__nav::-webkit-scrollbar {
+			display: none;
+		}
+
+		.site-header__nav ul {
+			width: max-content;
+			gap: var(--space-6);
+		}
+	}
+</style>

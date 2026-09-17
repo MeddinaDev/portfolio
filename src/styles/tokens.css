@@ -2,14 +2,17 @@
 	color-scheme: dark;
 
 	/* Color */
-	--color-canvas: #080b10;
-	--color-surface: #0f141c;
-	--color-surface-raised: #151c26;
-	--color-text: #f4f7fb;
-	--color-text-muted: #98a4b3;
+	--color-canvas: #07111f;
+	--color-surface: #0b1726;
+	--color-surface-step: #0e1b2b;
+	--color-surface-raised: #122033;
+	--color-hero-decoration-rgb: 72 91 119;
+	--color-text: #f1f1ed;
+	--color-text-muted: #979797;
 	--color-border: rgb(255 255 255 / 12%);
-	--color-accent: #7dd3fc;
-	--color-accent-strong: #38bdf8;
+	--color-border-strong: rgb(255 255 255 / 24%);
+	--color-accent: #f1f1ed;
+	--color-accent-strong: #ffffff;
 
 	/* Typography */
 	--font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -23,6 +26,7 @@
 	--container-max: 72rem;
 	--gutter: clamp(1.25rem, 4vw, 4rem);
 	--section-space: clamp(5rem, 10vw, 9rem);
+	--header-height: 5rem;
 
 	/* Spacing */
 	--space-1: 0.25rem;
