@@ -28,8 +28,25 @@ export interface HeroContent {
 	socialLinks: readonly SocialLink[];
 }
 
+export type AboutDetailKind = 'education' | 'location' | 'focus' | 'quality';
+
+export interface AboutDetail {
+	kind: AboutDetailKind;
+	label: string;
+	primary: string;
+	secondary: string;
+}
+
+export interface AboutContent {
+	eyebrow: string;
+	title: string;
+	paragraphs: readonly string[];
+	details: readonly AboutDetail[];
+}
+
 export interface SiteContent {
 	metadata: SiteMetadata;
 	navigation: readonly NavigationItem[];
 	hero: HeroContent;
+	about: AboutContent;
 }

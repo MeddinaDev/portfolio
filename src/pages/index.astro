@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import About from '../components/About.astro';
 import Hero from '../components/Hero.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import { defaultLocale } from '../i18n/config';
@@ -12,5 +13,6 @@ const content = siteContent[defaultLocale];
 	<SiteHeader items={content.navigation} />
 	<main id="main-content">
 		<Hero content={content.hero} />
+		<About content={content.about} />
 	</main>
 </BaseLayout>
