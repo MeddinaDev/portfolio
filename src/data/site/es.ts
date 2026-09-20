@@ -127,4 +127,42 @@ export const es = {
 			},
 		],
 	},
+	technologies: {
+		eyebrow: '03 / Tecnologías',
+		title: 'Tecnologías con las que construyo y aprendo.',
+		introduction:
+			'Mi stack se centra en backend con Java y Spring Boot, complementado con Python, bases de datos, testing automatizado y herramientas de desarrollo.',
+		core: {
+			label: 'Core Backend',
+			technologies: [
+				{ name: 'Java', emphasis: 'specialty' },
+				{ name: 'Spring Boot', emphasis: 'specialty' },
+				{ name: 'Python', emphasis: 'pillar' },
+				{ name: 'PostgreSQL', emphasis: 'pillar' },
+			],
+			capabilities: ['REST APIs', 'SQL', 'Maven'],
+		},
+		groups: [
+			{
+				kind: 'backend-security',
+				label: 'Backend & Seguridad',
+				items: ['Spring Security', 'JWT', 'Flyway', 'OpenAPI / Swagger'],
+			},
+			{
+				kind: 'testing',
+				label: 'Testing & Calidad',
+				items: ['JUnit', 'Mockito', 'Testcontainers', 'JaCoCo'],
+			},
+			{
+				kind: 'tools',
+				label: 'Herramientas',
+				items: ['Git', 'GitHub', 'GitHub Actions', 'Docker'],
+			},
+			{
+				kind: 'complementary',
+				label: 'Complementario',
+				items: ['Flutter', 'Dart', 'Supabase', 'Integraciones IA/LLM'],
+			},
+		],
+	},
 } as const satisfies SiteContent;

@@ -87,10 +87,38 @@ export interface ProjectsContent {
 	secondary: readonly SecondaryProject[];
 }
 
+export type CoreTechnologyEmphasis = 'specialty' | 'pillar';
+
+export interface CoreTechnology {
+	name: string;
+	emphasis: CoreTechnologyEmphasis;
+}
+
+export type TechnologyGroupKind = 'backend-security' | 'testing' | 'tools' | 'complementary';
+
+export interface TechnologyGroup {
+	kind: TechnologyGroupKind;
+	label: string;
+	items: readonly string[];
+}
+
+export interface TechnologiesContent {
+	eyebrow: string;
+	title: string;
+	introduction: string;
+	core: {
+		label: string;
+		technologies: readonly CoreTechnology[];
+		capabilities: readonly string[];
+	};
+	groups: readonly TechnologyGroup[];
+}
+
 export interface SiteContent {
 	metadata: SiteMetadata;
 	navigation: readonly NavigationItem[];
 	hero: HeroContent;
 	about: AboutContent;
 	projects: ProjectsContent;
+	technologies: TechnologiesContent;
 }

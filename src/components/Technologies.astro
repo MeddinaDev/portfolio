@@ -1,0 +1,431 @@
+---
+import type { TechnologiesContent } from '../types/site';
+
+interface Props {
+	content: TechnologiesContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id="tecnologias" class="technologies" aria-labelledby="technologies-title">
+	<div class="container">
+		<header class="technologies__header">
+			<p class="technologies__eyebrow">{content.eyebrow}</p>
+			<h2 id="technologies-title">{content.title}</h2>
+			<p class="technologies__introduction">{content.introduction}</p>
+		</header>
+
+		<div class="technologies__bento">
+			<article class="technology-card technology-card--core" data-spotlight>
+				<header class="technology-card__header">
+					<p>{content.core.label}</p>
+					<span aria-hidden="true">01</span>
+				</header>
+
+				<ul class="core-stack" aria-label="Tecnologías principales de backend">
+					{content.core.technologies.map((technology) => (
+						<li class:list={[`core-stack__item--${technology.emphasis}`]}>{technology.name}</li>
+					))}
+				</ul>
+
+				<ul class="core-capabilities" aria-label="Capacidades fundamentales de backend">
+					{content.core.capabilities.map((capability) => <li>{capability}</li>)}
+				</ul>
+			</article>
+
+			{content.groups.map((group, index) => (
+				<article class:list={['technology-card', 'technology-card--secondary', `technology-card--${group.kind}`]} data-spotlight>
+					<header class="technology-card__header">
+						<h3>{group.label}</h3>
+						<span aria-hidden="true">{String(index + 2).padStart(2, '0')}</span>
+					</header>
+
+					<ul class="technology-list" aria-label={`Tecnologías de ${group.label}`}>
+						{group.items.map((item) => <li>{item}</li>)}
+					</ul>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+<script>
+	import { setupSpotlights } from '../scripts/spotlight';
+
+	setupSpotlights();
+</script>
+
+<style>
+	.technologies {
+		padding-block: var(--section-space);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.technologies__header {
+		display: grid;
+		grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.75fr);
+		align-items: end;
+		gap: var(--space-8) var(--space-16);
+		margin-bottom: clamp(3rem, 7vw, 5rem);
+	}
+
+	.technologies__eyebrow {
+		display: flex;
+		grid-column: 1 / -1;
+		align-items: center;
+		gap: var(--space-3);
+		margin: 0;
+		color: var(--color-text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		letter-spacing: 0.13em;
+		text-transform: uppercase;
+	}
+
+	.technologies__eyebrow::after {
+		width: 3rem;
+		height: 1px;
+		background: var(--color-border-strong);
+		content: '';
+	}
+
+	.technologies__header h2 {
+		max-width: 15ch;
+		margin: 0;
+		font-size: clamp(2.35rem, 4.8vw, 4.7rem);
+		font-weight: 520;
+		letter-spacing: -0.055em;
+		line-height: 1;
+		text-wrap: balance;
+	}
+
+	.technologies__introduction {
+		max-width: 31rem;
+		margin: 0 0 0.2rem;
+		color: #c5c5c2;
+		font-size: clamp(1rem, 1.35vw, 1.16rem);
+		line-height: 1.7;
+	}
+
+	.technologies__bento {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		grid-template-rows: repeat(2, minmax(14.5rem, auto)) minmax(18rem, auto);
+		gap: var(--space-4);
+	}
+
+	.technology-card {
+		--spotlight-x: 50%;
+		--spotlight-y: 50%;
+
+		position: relative;
+		isolation: isolate;
+		display: flex;
+		min-width: 0;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+	}
+
+	.technology-card--core {
+		--spotlight-fill-size: 32rem;
+		--spotlight-fill-opacity: 12%;
+		--spotlight-border-size: 16rem;
+		--spotlight-border-primary-opacity: 50%;
+		--spotlight-border-secondary-opacity: 20%;
+
+		grid-row: 1 / 3;
+		grid-column: 1 / 8;
+		min-height: 30rem;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: clamp(2rem, 4.5vw, 4rem);
+		box-shadow: var(--shadow-soft);
+	}
+
+	.technology-card--secondary {
+		--spotlight-fill-size: 25rem;
+		--spotlight-fill-opacity: 9%;
+		--spotlight-border-size: 13rem;
+		--spotlight-border-primary-opacity: 42%;
+		--spotlight-border-secondary-opacity: 17%;
+
+		flex-direction: column;
+		justify-content: space-between;
+		gap: var(--space-8);
+		padding: clamp(1.5rem, 3vw, 2.4rem);
+	}
+
+	.technology-card--backend-security,
+	.technology-card--testing {
+		grid-column: 8 / 13;
+	}
+
+	.technology-card--backend-security {
+		grid-row: 1;
+	}
+
+	.technology-card--testing {
+		grid-row: 2;
+		background: var(--color-surface);
+	}
+
+	.technology-card--tools {
+		grid-row: 3;
+		grid-column: 1 / 6;
+	}
+
+	.technology-card--complementary {
+		grid-row: 3;
+		grid-column: 6 / 13;
+	}
+
+	[data-spotlight]::before,
+	[data-spotlight]::after {
+		position: absolute;
+		content: '';
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 320ms var(--ease-out);
+	}
+
+	[data-spotlight]::before {
+		z-index: -1;
+		inset: 0;
+		background: radial-gradient(
+			var(--spotlight-fill-size) circle at var(--spotlight-x) var(--spotlight-y),
+			rgb(var(--color-spotlight-rgb) / var(--spotlight-fill-opacity)),
+			transparent 68%
+		);
+	}
+
+	[data-spotlight]::after {
+		z-index: 2;
+		inset: -1px;
+		padding: 1px;
+		border-radius: inherit;
+		background: radial-gradient(
+			var(--spotlight-border-size) circle at var(--spotlight-x) var(--spotlight-y),
+			rgb(255 255 255 / var(--spotlight-border-primary-opacity)),
+			rgb(var(--color-spotlight-rgb) / var(--spotlight-border-secondary-opacity)) 38%,
+			transparent 72%
+		);
+		-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+	}
+
+	[data-spotlight][data-spotlight-active]::before,
+	[data-spotlight][data-spotlight-active]::after {
+		opacity: 1;
+	}
+
+	.technology-card__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: var(--space-4);
+		padding-bottom: var(--space-4);
+		border-bottom: 1px solid var(--color-border);
+		font-family: var(--font-mono);
+		font-size: 0.63rem;
+		letter-spacing: 0.11em;
+		line-height: 1.45;
+		text-transform: uppercase;
+	}
+
+	.technology-card__header p,
+	.technology-card__header h3 {
+		margin: 0;
+		font: inherit;
+	}
+
+	.technology-card__header p {
+		color: var(--color-text);
+	}
+
+	.technology-card__header h3,
+	.technology-card__header span {
+		color: var(--color-text-muted);
+	}
+
+	.core-stack {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(1rem, 2.5vw, 2rem) var(--space-8);
+		padding: clamp(2.5rem, 6vw, 5rem) 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.core-stack li {
+		min-width: 0;
+		letter-spacing: -0.055em;
+		line-height: 0.98;
+		text-wrap: balance;
+	}
+
+	.core-stack__item--specialty {
+		font-size: clamp(2.4rem, 4.25vw, 4.2rem);
+		font-weight: 550;
+	}
+
+	.core-stack__item--pillar {
+		align-self: end;
+		color: #d5d5d1;
+		font-size: clamp(1.85rem, 3.25vw, 3.15rem);
+		font-weight: 490;
+	}
+
+	.core-capabilities {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		padding: var(--space-6) 0 0;
+		margin: 0;
+		border-top: 1px solid var(--color-border);
+		list-style: none;
+	}
+
+	.core-capabilities li {
+		padding: 0.4rem 0.65rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		color: #c5c5c2;
+		font-family: var(--font-mono);
+		font-size: 0.65rem;
+		line-height: 1.4;
+	}
+
+	.technology-list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.technology-list li {
+		min-width: 0;
+		padding: var(--space-4) 0;
+		border-bottom: 1px solid var(--color-border);
+		font-size: clamp(0.96rem, 1.5vw, 1.15rem);
+		line-height: 1.35;
+	}
+
+	.technology-list li:nth-child(odd) {
+		padding-right: var(--space-4);
+		border-right: 1px solid var(--color-border);
+	}
+
+	.technology-list li:nth-child(even) {
+		padding-left: var(--space-4);
+	}
+
+	.technology-list li:nth-last-child(-n + 2) {
+		border-bottom: 0;
+	}
+
+	.technology-card--testing .technology-list li {
+		font-weight: 520;
+	}
+
+	@media (max-width: 64rem) {
+		.technologies__header {
+			grid-template-columns: 1fr;
+		}
+
+		.technologies__bento {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-rows: auto;
+		}
+
+		.technology-card--core {
+			grid-row: auto;
+			grid-column: 1 / -1;
+		}
+
+		.technology-card--backend-security,
+		.technology-card--testing,
+		.technology-card--tools,
+		.technology-card--complementary {
+			grid-row: auto;
+			grid-column: auto;
+			min-height: 18rem;
+		}
+	}
+
+	@media (max-width: 46rem) {
+		.technologies__bento {
+			grid-template-columns: 1fr;
+			gap: var(--space-3);
+		}
+
+		.technology-card--core,
+		.technology-card--backend-security,
+		.technology-card--testing,
+		.technology-card--tools,
+		.technology-card--complementary {
+			grid-column: 1;
+		}
+
+		.technology-card--core {
+			min-height: 32rem;
+		}
+
+		.technology-card--secondary {
+			min-height: 16rem;
+		}
+	}
+
+	@media (max-width: 34rem) {
+		.technologies__header {
+			gap: var(--space-6);
+		}
+
+		.technology-card--core,
+		.technology-card--secondary {
+			padding: 1.5rem;
+		}
+
+		.core-stack {
+			grid-template-columns: 1fr;
+			gap: var(--space-6);
+			padding-block: var(--space-12);
+		}
+
+		.core-stack__item--specialty {
+			font-size: clamp(2.35rem, 12vw, 3.4rem);
+		}
+
+		.core-stack__item--pillar {
+			font-size: clamp(1.9rem, 10vw, 2.75rem);
+		}
+
+		.technology-list {
+			grid-template-columns: 1fr;
+		}
+
+		.technology-list li,
+		.technology-list li:nth-child(odd),
+		.technology-list li:nth-child(even),
+		.technology-list li:nth-last-child(-n + 2) {
+			padding: var(--space-4) 0;
+			border-right: 0;
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.technology-list li:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		[data-spotlight]::before,
+		[data-spotlight]::after {
+			display: none;
+		}
+	}
+</style>

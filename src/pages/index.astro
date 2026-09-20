@@ -4,6 +4,7 @@ import About from '../components/About.astro';
 import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import Technologies from '../components/Technologies.astro';
 import { defaultLocale } from '../i18n/config';
 import { siteContent } from '../data/site';
 
@@ -16,5 +17,6 @@ const content = siteContent[defaultLocale];
 		<Hero content={content.hero} />
 		<About content={content.about} />
 		<Projects content={content.projects} />
+		<Technologies content={content.technologies} />
 	</main>
 </BaseLayout>
