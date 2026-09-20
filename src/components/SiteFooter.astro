@@ -1,0 +1,49 @@
+---
+import type { FooterContent } from '../types/site';
+
+interface Props {
+	content: FooterContent;
+}
+
+const { content } = Astro.props;
+---
+
+<footer class="site-footer">
+	<div class="site-footer__inner container">
+		<p>{content.copyright}</p>
+		<p>{content.role}</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.site-footer__inner {
+		display: flex;
+		min-height: 6rem;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-4) var(--space-8);
+	}
+
+	.site-footer p {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.65rem;
+		letter-spacing: 0.08em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 32rem) {
+		.site-footer__inner {
+			min-height: 7rem;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+		}
+	}
+</style>

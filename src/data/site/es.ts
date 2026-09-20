@@ -165,4 +165,22 @@ export const es = {
 			},
 		],
 	},
+	contact: {
+		eyebrow: '04 / Contacto',
+		title: '¿Construimos algo juntos?',
+		introduction:
+			'Estoy abierto a oportunidades como Desarrollador Backend, especialmente en Java, Spring Boot y Python.',
+		ctaLabel: 'Hablemos',
+		email: 'javiermedina967@gmail.com',
+		location: 'Córdoba, España',
+		availability: ['Remoto en España', 'Híbrido en Córdoba / Andalucía'],
+		socialLinks: [
+			{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/javier-medina-dev' },
+			{ label: 'GitHub', href: 'https://github.com/MeddinaDev' },
+		],
+	},
+	footer: {
+		copyright: '© Javier Medina',
+		role: 'Desarrollador Backend Junior',
+	},
 } as const satisfies SiteContent;

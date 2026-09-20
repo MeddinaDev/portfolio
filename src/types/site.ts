@@ -114,6 +114,27 @@ export interface TechnologiesContent {
 	groups: readonly TechnologyGroup[];
 }
 
+export interface ContactLink {
+	label: string;
+	href: string;
+}
+
+export interface ContactContent {
+	eyebrow: string;
+	title: string;
+	introduction: string;
+	ctaLabel: string;
+	email: string;
+	location: string;
+	availability: readonly string[];
+	socialLinks: readonly ContactLink[];
+}
+
+export interface FooterContent {
+	copyright: string;
+	role: string;
+}
+
 export interface SiteContent {
 	metadata: SiteMetadata;
 	navigation: readonly NavigationItem[];
@@ -121,4 +142,6 @@ export interface SiteContent {
 	about: AboutContent;
 	projects: ProjectsContent;
 	technologies: TechnologiesContent;
+	contact: ContactContent;
+	footer: FooterContent;
 }
