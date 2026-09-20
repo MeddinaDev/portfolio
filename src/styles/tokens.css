@@ -3,15 +3,15 @@
 
 	/* Color */
 	--color-canvas: #07111f;
-	--color-surface: #0b1726;
-	--color-surface-step: #0e1b2b;
-	--color-surface-raised: #122033;
+	--color-surface: #0e1c2d;
+	--color-surface-step: #12243a;
+	--color-surface-raised: #172b45;
 	--color-hero-decoration-rgb: 72 91 119;
 	--color-spotlight-rgb: 112 147 196;
 	--color-text: #f1f1ed;
 	--color-text-muted: #979797;
-	--color-border: rgb(255 255 255 / 12%);
-	--color-border-strong: rgb(255 255 255 / 24%);
+	--color-border: rgb(255 255 255 / 14%);
+	--color-border-strong: rgb(255 255 255 / 28%);
 	--color-accent: #f1f1ed;
 	--color-accent-strong: #ffffff;
 

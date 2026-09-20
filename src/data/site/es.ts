@@ -65,4 +65,66 @@ export const es = {
 			},
 		],
 	},
+	projects: {
+		eyebrow: '02 / Proyectos',
+		title: 'Software construido para resolver problemas reales.',
+		introduction:
+			'Una selección de proyectos donde aplico backend, arquitectura, testing y desarrollo multiplataforma.',
+		flagship: {
+			label: 'Proyecto destacado',
+			category: 'Backend / Java',
+			title: 'Lumind Intelligence API',
+			claim: 'Backend REST de productividad diseñado con criterios de software mantenible.',
+			description:
+				'API para autenticación, hábitos, tareas, sesiones Pomodoro, estadísticas y análisis de productividad.',
+			stack: ['Java 21', 'Spring Boot 3.5', 'PostgreSQL', 'Flyway'],
+			features: [
+				'Auth',
+				'Hábitos',
+				'Tareas',
+				'Pomodoro',
+				'Estadísticas',
+				'Ownership por usuario',
+				'OpenAPI / Swagger',
+				'Testcontainers PostgreSQL',
+				'Arquitectura feature-based',
+			],
+			link: {
+				label: 'Ver código',
+				href: 'https://github.com/MeddinaDev/lumind-intelligence-api',
+			},
+			endpoint: 'POST /api/v1/ai/productivity-analysis',
+			technicalItems: [
+				{ label: 'Auth', lines: ['JWT stateless', 'Refresh rotation'] },
+				{ label: 'Database', lines: ['PostgreSQL', 'Flyway'] },
+				{ label: 'Test suite', lines: ['174 tests'] },
+				{ label: 'Quality gate', lines: ['JaCoCo', '≥80% instructions', '≥50% branches'] },
+				{ label: 'CI', lines: ['mvn clean verify'] },
+			],
+		},
+		secondary: [
+			{
+				kind: 'lumind',
+				label: 'App multiplataforma',
+				title: 'Lumind',
+				description:
+					'Aplicación de productividad personal con tareas, Pomodoro y seguimiento de progreso.',
+				stack: ['Flutter', 'Dart', 'BLoC', 'Supabase'],
+				details: ['Supabase Auth', 'PostgreSQL', 'Clean Architecture'],
+				links: [{ label: 'Ver código', href: 'https://github.com/MeddinaDev/Lumind' }],
+			},
+			{
+				kind: 'rsvp',
+				label: 'Web / Serverless',
+				title: 'RSVP Event Manager',
+				description: 'Confirmación de asistencia para eventos privados.',
+				stack: ['JavaScript', 'Supabase', 'PostgreSQL', 'Vercel'],
+				details: ['Mobile-first', 'Persistencia serverless', 'Google Maps'],
+				links: [
+					{ label: 'Demo', href: 'https://rsvp-event-manager-omega.vercel.app/' },
+					{ label: 'Código', href: 'https://github.com/MeddinaDev/rsvp-event-manager' },
+				],
+			},
+		],
+	},
 } as const satisfies SiteContent;
