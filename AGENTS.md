@@ -11,6 +11,6 @@
 - No fijes el Hero a `75–88vh`: debe ser protagonista y dejar intuir contenido posterior; su altura se decide al revisar el diseño real.
 - La visualización técnica debe conservar este flujo: `HTTP Request → JWT Authentication → Controller/Service → PostgreSQL → 200 OK`.
 - Limita cualquier spotlight a superficies importantes para mantener la jerarquía visual.
-- No añadas por ahora fotografía personal, analítica, formulario de contacto, CV ni un nivel concreto de inglés.
-- No inventes el dominio, email público ni URLs finales de repositorios o demos; mantenlos fuera de la UI hasta que se definan.
+- No añadas por ahora analítica, formulario de contacto, CV ni un nivel concreto de inglés.
+- No inventes el dominio ni nuevas URLs de repositorios o demos; mantenlos fuera de la UI hasta que se definan.
 - No hagas commit, push ni despliegue salvo petición expresa.

@@ -19,7 +19,7 @@ const { content } = Astro.props;
 		<div class="technologies__bento">
 			<article class="technology-card technology-card--core" data-spotlight>
 				<header class="technology-card__header">
-					<p>{content.core.label}</p>
+					<h3 class="technology-card__core-heading">{content.core.label}</h3>
 					<span aria-hidden="true">01</span>
 				</header>
 
@@ -236,13 +236,12 @@ const { content } = Astro.props;
 		text-transform: uppercase;
 	}
 
-	.technology-card__header p,
 	.technology-card__header h3 {
 		margin: 0;
 		font: inherit;
 	}
 
-	.technology-card__header p {
+	.technology-card__header h3.technology-card__core-heading {
 		color: var(--color-text);
 	}
 

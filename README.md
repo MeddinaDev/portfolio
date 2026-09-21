@@ -28,4 +28,4 @@ npm run preview
 - `src/types/`: contratos TypeScript compartidos.
 - `public/`: recursos estáticos, incluido el favicon JM.
 
-La URL pública, el correo de contacto, el CV y los enlaces definitivos de proyectos se incorporarán cuando estén aprobados.
+La URL pública y el CV se incorporarán cuando estén aprobados.

@@ -13,7 +13,7 @@ export interface NavigationItem {
 
 export interface SocialLink {
 	label: string;
-	href: string | null;
+	href: string;
 }
 
 export interface HeroContent {

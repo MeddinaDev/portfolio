@@ -1,5 +1,10 @@
 import type { SiteContent } from '../../types/site';
 
+const socialLinks = [
+	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/javier-medina-dev' },
+	{ label: 'GitHub', href: 'https://github.com/MeddinaDev' },
+] as const;
+
 export const es = {
 	metadata: {
 		title: 'Javier Medina — Desarrollador Backend Junior',
@@ -25,11 +30,7 @@ export const es = {
 		availability: 'Abierto a oportunidades',
 		projectsLabel: 'Ver proyectos',
 		projectsHref: '#proyectos',
-		// Se activarán cuando las URLs públicas definitivas estén aprobadas.
-		socialLinks: [
-			{ label: 'GitHub', href: null },
-			{ label: 'LinkedIn', href: null },
-		],
+		socialLinks: [socialLinks[1], socialLinks[0]],
 	},
 	about: {
 		eyebrow: '01 / Sobre mí',
@@ -174,10 +175,7 @@ export const es = {
 		email: 'javiermedina967@gmail.com',
 		location: 'Córdoba, España',
 		availability: ['Remoto en España', 'Híbrido en Córdoba / Andalucía'],
-		socialLinks: [
-			{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/javier-medina-dev' },
-			{ label: 'GitHub', href: 'https://github.com/MeddinaDev' },
-		],
+		socialLinks,
 	},
 	footer: {
 		copyright: '© Javier Medina',
