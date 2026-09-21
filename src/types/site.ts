@@ -4,6 +4,12 @@ export interface SiteMetadata {
 	siteName: string;
 	openGraphLocale: string;
 	themeColor: string;
+	socialImage: {
+		src: `/${string}`;
+		width: number;
+		height: number;
+		alt: string;
+	};
 }
 
 export interface NavigationItem {

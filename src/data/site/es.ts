@@ -13,6 +13,12 @@ export const es = {
 		siteName: 'Portfolio de JM',
 		openGraphLocale: 'es_ES',
 		themeColor: '#07111f',
+		socialImage: {
+			src: '/og-image.png',
+			width: 1200,
+			height: 630,
+			alt: 'Javier Medina — Desarrollador Backend Junior',
+		},
 	},
 	navigation: [
 		{ label: 'Sobre mí', href: '#sobre-mi' },
