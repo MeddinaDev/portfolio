@@ -37,7 +37,7 @@ const [github, linkedIn] = content.socialLinks;
 				<a class="button button--secondary" href={github.href} target="_blank" rel="noopener noreferrer">
 					{github.label}<span class="sr-only"> (se abre en una pestaña nueva)</span>
 				</a>
-				<a class="hero__text-link" href={linkedIn.href} target="_blank" rel="noopener noreferrer">
+				<a class="button button--secondary" href={linkedIn.href} target="_blank" rel="noopener noreferrer">
 					{linkedIn.label}<span class="sr-only"> (se abre en una pestaña nueva)</span>
 				</a>
 			</div>
@@ -193,19 +193,6 @@ const [github, linkedIn] = content.socialLinks;
 		background: var(--color-surface-raised);
 	}
 
-	.hero__text-link {
-		padding: 0.65rem 0.4rem;
-		color: var(--color-text-muted);
-		font-family: var(--font-mono);
-		font-size: 0.72rem;
-		text-underline-offset: 0.28rem;
-	}
-
-	.hero__text-link:hover,
-	.hero__text-link:focus-visible {
-		color: var(--color-text);
-	}
-
 	.hero__metadata {
 		display: flex;
 		flex-wrap: wrap;
@@ -282,11 +269,6 @@ const [github, linkedIn] = content.socialLinks;
 
 		.button {
 			flex: 1 1 calc(50% - var(--space-3));
-		}
-
-		.hero__text-link {
-			flex-basis: 100%;
-			padding-left: 0;
 		}
 	}
 </style>

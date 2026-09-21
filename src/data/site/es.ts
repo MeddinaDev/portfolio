@@ -122,8 +122,8 @@ export const es = {
 				stack: ['JavaScript', 'Supabase', 'PostgreSQL', 'Vercel'],
 				details: ['Mobile-first', 'Persistencia serverless', 'Google Maps'],
 				links: [
-					{ label: 'Demo', href: 'https://rsvp-event-manager-omega.vercel.app/' },
-					{ label: 'Código', href: 'https://github.com/MeddinaDev/rsvp-event-manager' },
+					{ label: 'Ver demo', href: 'https://rsvp-event-manager-omega.vercel.app/' },
+					{ label: 'Ver código', href: 'https://github.com/MeddinaDev/rsvp-event-manager' },
 				],
 			},
 		],
